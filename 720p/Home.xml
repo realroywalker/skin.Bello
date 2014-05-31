@@ -22,6 +22,8 @@
 		<include condition="!Skin.HasSetting(HideLiveTVSubMenu)">HomeSubMenuLiveTV</include>
 		<include>SkinWidgetsLists</include>
 		<include>CommonDialogsFadeOutBG</include>
+		<include>RecentlyAddedHomeLabels</include>
+		<include>NextRecordingLabel</include>
 	  <!-- Home TopSection -->
 		<include>TopHomeMenu</include>
 		<include>HomeWeatherAndClock</include>

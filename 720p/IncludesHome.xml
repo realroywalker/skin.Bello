@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes> 
+		<!-- ===================== -->
+		<!-- Recently Added Labels -->
+		<!-- ===================== -->
+		<include name="RecentlyAddedHomeLabels">
+		<control type="grouplist">
+				<left>45</left>
+				<top>25</top>
+				<height>70</height>
+					<width>1190</width>
+					<itemgap>20</itemgap>
+					<align>left</align>
+					<orientation>horizontal</orientation>
+		      <include>HomeSlideAnimations</include>
+			<visible>![Control.HasFocus(81) | Control.HasFocus(82) | Control.HasFocus(83)] + [Container(20).HasFocus(1) | Container(20).HasFocus(2) | Container(20).HasFocus(3)]</visible>
+			<control type="label">
+			<include>TopBigLabel</include>
+			<textcolor>blue</textcolor>
+			<label>Latest</label>
+			</control>
+			<control type="label">
+			<visible>[Container(20).HasFocus(2)]</visible>
+			<include>TopSmallLabel</include>
+			<label>$INFO[Window.Property(LatestMovie.1.Title)] ($INFO[Window.Property(LatestMovie.1.Year)]) </label>
+			</control>
+			<control type="label">
+			<visible>[Container(20).HasFocus(1)]</visible>
+			<include>TopSmallLabel</include>
+			<label>$INFO[Window.Property(LatestEpisode.1.ShowTitle)] - $INFO[Window.Property(LatestEpisode.1.EpisodeTitle)]</label>
+			</control>
+			<control type="label">
+			<visible>[Container(20).HasFocus(3)]</visible>
+			<include>TopSmallLabel</include>
+			<label>$INFO[Window.Property(LatestAlbum.1.Artist)] - $INFO[Window.Property(LatestAlbum.1.Title)]</label>
+			</control>
+		</control>
+		</include>
+
+		<!-- ==================== -->
+		<!-- Next Recording Label -->
+		<!-- ==================== -->
+		<include name="NextRecordingLabel">
+		<control type="grouplist">
+				<left>45</left>
+				<top>25</top>
+				<height>70</height>
+					<width>1190</width>
+					<itemgap>20</itemgap>
+					<align>left</align>
+					<orientation>horizontal</orientation>
+		      <include>HomeSlideAnimations</include>
+			<visible>[Container(20).HasFocus(11)]</visible>
+			<control type="label">
+			<include>TopBigLabel</include>
+			<textcolor>blue</textcolor>
+			<label>Upcoming</label>
+			</control>
+			<control type="label">
+			<visible>[Container(20).HasFocus(11)]</visible>
+			<include>TopSmallLabel</include>
+			<label>$INFO[Pvr.NextRecordingDateTime] - $INFO[Pvr.NextRecordingTitle]</label>
+			</control>
+   		</control>
+		</include>
+		
 		<!-- ====================== -->
 		<!-- Main Home List Buttons -->
 		<!-- ====================== -->
@@ -31,7 +95,9 @@
 					 <width>1500</width>
 					 <height>720</height>
 					 <align>center</align>
-				   <onup>SetFocus(21)</onup>
+				   <onup condition="![[Container(20).HasFocus(2)] | [Container(20).HasFocus(1)] | [Container(20).HasFocus(3)]]">SetFocus(21)</onup>
+					 <onup condition="[Library.HasContent(movies) + Container(20).HasFocus(2)] | [Library.HasContent(tvshows) + Container(20).HasFocus(1)] | [Library.HasContent(music) + Container(20).HasFocus(3)] | [Container(20).HasFocus(11)]">SetFocus(81)</onup>
+														
 					 <ondown condition="[Container(20).HasFocus(11) + !Skin.HasSetting(HideLiveTVSubMenu)]
 					                  | [Container(20).HasFocus(9) + !Skin.HasSetting(HideSettingsSubMenu)]
 					                  | [Container(20).HasFocus(7) + !Skin.HasSetting(HideAddonsSubMenu)]
@@ -869,7 +935,7 @@
 		  <control type="group">
 				<left>45</left>
 				<top>25</top>
-				<visible>![Control.HasFocus(81) | Control.HasFocus(82) | Control.HasFocus(83) | Window.IsActive(ShutdownMenu) | Window.IsActive(ContextMenu) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(Favourites)]</visible>
+				<visible>![Control.HasFocus(81) | Control.HasFocus(82) | Control.HasFocus(83) | Window.IsActive(ShutdownMenu) | Window.IsActive(ContextMenu) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(Favourites) | Container(20).HasFocus(1) | Container(20).HasFocus(2) | Container(20).HasFocus(3) | Container(20).HasFocus(11)]</visible>
 		    <include>HomeSlideAnimations</include>
 				<control type="grouplist" id="21">
 					<left>0</left>
