@@ -24,6 +24,7 @@
 		<include>CommonDialogsFadeOutBG</include>
 		<include>RecentlyAddedHomeLabels</include>
 		<include>NextRecordingLabel</include>
+		<include>CurrentRecordingLabel</include>
 	  <!-- Home TopSection -->
 		<include>TopHomeMenu</include>
 		<include>HomeWeatherAndClock</include>

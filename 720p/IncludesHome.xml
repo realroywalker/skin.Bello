@@ -21,16 +21,19 @@
 			</control>
 			<control type="label">
 			<visible>[Container(20).HasFocus(2)]</visible>
+			<width>900</width>
 			<include>TopSmallLabel</include>
 			<label>$INFO[Window.Property(LatestMovie.1.Title)] ($INFO[Window.Property(LatestMovie.1.Year)]) </label>
 			</control>
 			<control type="label">
 			<visible>[Container(20).HasFocus(1)]</visible>
+			<width>900</width>
 			<include>TopSmallLabel</include>
 			<label>$INFO[Window.Property(LatestEpisode.1.ShowTitle)] - $INFO[Window.Property(LatestEpisode.1.EpisodeTitle)]</label>
 			</control>
 			<control type="label">
 			<visible>[Container(20).HasFocus(3)]</visible>
+			<width>900</width>
 			<include>TopSmallLabel</include>
 			<label>$INFO[Window.Property(LatestAlbum.1.Artist)] - $INFO[Window.Property(LatestAlbum.1.Title)]</label>
 			</control>
@@ -51,6 +54,8 @@
 					<orientation>horizontal</orientation>
 		      <include>HomeSlideAnimations</include>
 			<visible>[Container(20).HasFocus(11)]</visible>
+			<visible>Pvr.HasTimer</visible>
+			<visible>!Pvr.IsRecording</visible>
 			<control type="label">
 			<include>TopBigLabel</include>
 			<textcolor>blue</textcolor>
@@ -58,8 +63,38 @@
 			</control>
 			<control type="label">
 			<visible>[Container(20).HasFocus(11)]</visible>
+			<width>900</width>
 			<include>TopSmallLabel</include>
 			<label>$INFO[Pvr.NextRecordingDateTime] - $INFO[Pvr.NextRecordingTitle]</label>
+			</control>
+   		</control>
+		</include>
+		
+		<!-- ======================= -->
+		<!-- Current Recording Label -->
+		<!-- ======================= -->
+		<include name="CurrentRecordingLabel">
+		<control type="grouplist">
+				<left>45</left>
+				<top>25</top>
+				<height>70</height>
+					<width>1190</width>
+					<itemgap>20</itemgap>
+					<align>left</align>
+					<orientation>horizontal</orientation>
+		      <include>HomeSlideAnimations</include>
+			<visible>[Container(20).HasFocus(11)]</visible>
+			<visible>Pvr.IsRecording</visible>
+			<control type="label">
+			<include>TopBigLabel</include>
+			<textcolor>blue</textcolor>
+			<label>Recording</label>
+			</control>
+			<control type="label">
+			<visible>[Container(20).HasFocus(11)]</visible>
+			<width>900</width>
+			<include>TopSmallLabel</include>
+			<label>$INFO[Pvr.NowRecordingChannel] - $INFO[Pvr.NowRecordingTitle]</label>
 			</control>
    		</control>
 		</include>
